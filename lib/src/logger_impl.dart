@@ -85,10 +85,16 @@ class LoggerImpl with LoggerBase {
     buffer.write('Logger(');
 
     if (name != null) {
-      buffer..write('name=')..write(name)..write(', ');
+      buffer
+        ..write('name=')
+        ..write(name)
+        ..write(', ');
     }
 
-    buffer..write('level=')..write(level.name)..write(')');
+    buffer
+      ..write('level=')
+      ..write(level.name)
+      ..write(')');
 
     return buffer.toString();
   }

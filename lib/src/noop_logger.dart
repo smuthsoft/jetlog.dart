@@ -1,9 +1,9 @@
 import 'package:jetlog/src/field.dart' show Field;
 import 'package:jetlog/src/filter.dart';
 import 'package:jetlog/src/handler.dart';
+import 'package:jetlog/src/interface.dart';
 import 'package:jetlog/src/level.dart';
 import 'package:jetlog/src/logger.dart';
-import 'package:jetlog/src/interface.dart';
 import 'package:jetlog/src/tracer.dart';
 
 class NoopTracer implements Tracer {

@@ -1,6 +1,6 @@
-import 'package:test/test.dart';
-import 'package:jetlog/jetlog.dart' show Field, FieldKind;
 import 'package:jetlog/formatters.dart' show FormatterBase;
+import 'package:jetlog/jetlog.dart' show Field, FieldKind;
+import 'package:test/test.dart';
 
 class CustomFormatter with FormatterBase<String> {}
 
