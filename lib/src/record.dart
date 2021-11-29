@@ -28,4 +28,13 @@ abstract class Record {
 
   /// The stack trace associated with the log record's [error], or `null` if none.
   StackTrace? get stack;
+
+  /// Gets the field named [name], or `null` if not found.
+  Field<T>? getField<T>(String name);
+
+  /// `true` if this record contains a field named [name].
+  bool hasField(String name);
+
+  /// Gets the value of the field named [name], or `null` if not found.
+  dynamic operator[](String name);
 }

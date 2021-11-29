@@ -5,7 +5,7 @@ import 'package:meta/meta.dart' show immutable;
 
 @immutable
 class RecordImpl implements Record {
-  const RecordImpl(
+  RecordImpl(
       {required this.level,
       required this.timestamp,
       required this.message,
@@ -34,4 +34,20 @@ class RecordImpl implements Record {
 
   @override
   final StackTrace? stack;
+
+  Map<String, Field>? _fieldsByName;
+
+  @override
+  Field<T>? getField<T>(String name) {
+    _fieldsByName ??= fields != null
+        ? Map.fromEntries(fields!.map((f) => MapEntry(f.name, f)))
+        : {};
+    return _fieldsByName![name] as Field<T>?;
+  }
+
+  @override
+  bool hasField(String name) => getField<dynamic>(name) != null;
+
+  @override
+  dynamic operator [](String name) => getField<dynamic>(name)?.value;
 }
