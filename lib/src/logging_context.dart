@@ -13,14 +13,16 @@ class LoggingContext implements Interface {
   final Set<Field>? _fields;
 
   @override
-  void log(Level level, String message) {
+  void log(Level level, String message, [Object? error, StackTrace? stack]) {
     if (_logger.isEnabledFor(level)) {
       final record = RecordImpl(
           name: _logger.name,
           timestamp: DateTime.now(),
           level: level,
           message: message,
-          fields: _fields);
+          fields: _fields,
+          error: error,
+          stack: stack);
 
       _logger.add(record);
     }

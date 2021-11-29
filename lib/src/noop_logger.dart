@@ -49,7 +49,7 @@ class NoopLogger with LoggerBase {
   Tracer trace(String message, {Level level = Level.debug}) => _tracer;
 
   @override
-  void log(Level level, String message) {
+  void log(Level level, String message, [Object? error, StackTrace? stack]) {
     // noop
   }
 

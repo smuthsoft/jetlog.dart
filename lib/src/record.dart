@@ -22,4 +22,10 @@ abstract class Record {
   ///
   /// May be omitted if no fields are bound to the logging context.
   Iterable<Field>? get fields;
+
+  /// The error associated with the log record, or `null` if none.
+  Object? get error;
+
+  /// The stack trace associated with the log record's [error], or `null` if none.
+  StackTrace? get stack;
 }

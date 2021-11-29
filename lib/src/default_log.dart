@@ -5,21 +5,26 @@ import 'package:jetlog/src/level.dart';
 extension DefaultLog on Interface {
   /// Emits a record with [message] and [Level.debug] severity level.
   @pragma('vm:prefer-inline')
-  void debug(String message) => log(Level.debug, message);
+  void debug(String message, [Object? error, StackTrace? stack]) =>
+      log(Level.debug, message, error, stack);
 
   /// Emits a record with [message] and [Level.info] severity level.
   @pragma('vm:prefer-inline')
-  void info(String message) => log(Level.info, message);
+  void info(String message, [Object? error, StackTrace? stack]) =>
+      log(Level.info, message, error, stack);
 
   /// Emits a record with [message] and [Level.warning] severity level.
   @pragma('vm:prefer-inline')
-  void warning(String message) => log(Level.warning, message);
+  void warning(String message, [Object? error, StackTrace? stack]) =>
+      log(Level.warning, message, error, stack);
 
   /// Emits a record with [message] and [Level.danger] severity level.
   @pragma('vm:prefer-inline')
-  void danger(String message) => log(Level.danger, message);
+  void danger(String message, [Object? error, StackTrace? stack]) =>
+      log(Level.danger, message, error, stack);
 
   /// Emits a record with [message] and [Level.fatal] severity level.
   @pragma('vm:prefer-inline')
-  void fatal(String message) => log(Level.fatal, message);
+  void fatal(String message, [Object? error, StackTrace? stack]) =>
+      log(Level.fatal, message, error, stack);
 }

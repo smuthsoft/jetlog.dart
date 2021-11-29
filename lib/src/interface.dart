@@ -1,4 +1,5 @@
 import 'package:jetlog/src/field.dart' show Field;
+import 'package:jetlog/src/handler.dart';
 import 'package:jetlog/src/level.dart';
 import 'package:jetlog/src/logger.dart';
 import 'package:jetlog/src/tracer.dart';
@@ -8,9 +9,12 @@ import 'package:jetlog/src/tracer.dart';
 abstract class Interface {
   /// Emits a record with [message] and [level] severity level.
   ///
+  /// If [error] and [stack] are provided, they will be added to the
+  /// [Record] provided to the [Handler].
+  ///
   /// If [level] is either [Level.all] or [Level.off] it will immediately
   /// throw [ArgumentError].
-  void log(Level level, String message);
+  void log(Level level, String message, [Object? error, StackTrace? stack]);
 
   /// Starts tracing and emits a record with [message] and [level]
   /// severity level; to stop tracing call [Tracer.stop] on the returned tracer.

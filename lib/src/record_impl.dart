@@ -10,7 +10,9 @@ class RecordImpl implements Record {
       required this.timestamp,
       required this.message,
       this.fields,
-      this.name});
+      this.name,
+      this.error,
+      this.stack});
 
   @override
   final Level level;
@@ -26,4 +28,10 @@ class RecordImpl implements Record {
 
   @override
   final Iterable<Field>? fields;
+
+  @override
+  final Object? error;
+
+  @override
+  final StackTrace? stack;
 }
