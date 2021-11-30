@@ -16,7 +16,7 @@ class TracerImpl implements Tracer {
   @pragma('vm:prefer-inline')
   void start(String message) {
     startAt = DateTime.now();
-    _context = _context.bind({DTM('start', startAt)})..log(_level, message);
+    _context = _context.bind({DTM('traceStart', startAt)})..log(_level, message);
 
     _timer.start();
   }
@@ -27,7 +27,7 @@ class TracerImpl implements Tracer {
       _timer.stop();
       stopAt = DateTime.now();
       _context.bind({
-        Dur('duration', _timer.elapsed),
+        Dur('traceDuration', _timer.elapsed),
         if (fields != null) ...fields
       }).log(level ?? _level, message);
     }

@@ -624,14 +624,14 @@ void main() {
               records
                   .elementAt(0)
                   .fields
-                  ?.firstWhere((f) => f.name == 'start')
+                  ?.firstWhere((f) => f.name == 'traceStart')
                   .value,
               isNotNull);
           expect(
               records
                   .elementAt(1)
                   .fields
-                  ?.firstWhere((f) => f.name == 'duration')
+                  ?.firstWhere((f) => f.name == 'traceDuration')
                   .value,
               isNotNull);
         });
