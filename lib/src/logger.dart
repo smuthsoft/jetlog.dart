@@ -75,7 +75,7 @@ abstract class Logger implements Interface {
   /// Only records with severity level equal to or higher then
   /// (in terms of [Level.value]) the [level] may be emitted by this logger;
   /// for example, if [level] set to [Level.info], only records with severity
-  /// level equal to [Level.info], [Level.warning], [Level.danger],
+  /// level equal to [Level.info], [Level.warning], [Level.error],
   /// or [Level.fatal] will be emitted by this logger.
   set level(Level? level);
 

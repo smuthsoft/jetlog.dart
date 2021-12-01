@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 
 Future<void> later(void action()) => Future.delayed(Duration.zero, action);
 
-bool _testFilter(Record record) => record.level == Level.danger;
+bool _testFilter(Record record) => record.level == Level.error;
 
 class CustomObject implements Loggable {
   @override
@@ -32,14 +32,14 @@ void main() {
           ..handler = handler
           ..level = Level.all;
 
-        logger.log(Level.danger, '');
-        logger.log(Level.danger, '');
-        logger.log(Level.danger, '');
-        logger.log(Level.danger, '');
-        logger.log(Level.danger, '');
-        logger.log(Level.danger, '');
-        logger.log(Level.danger, '');
-        logger.log(Level.danger, '');
+        logger.log(Level.error, '');
+        logger.log(Level.error, '');
+        logger.log(Level.error, '');
+        logger.log(Level.error, '');
+        logger.log(Level.error, '');
+        logger.log(Level.error, '');
+        logger.log(Level.error, '');
+        logger.log(Level.error, '');
 
         await later(() {
           final records = handler.records;
@@ -77,7 +77,7 @@ void main() {
           ..log(Level.debug, 'debug')
           ..log(Level.info, 'info')
           ..log(Level.warning, 'warning')
-          ..log(Level.danger, 'danger')
+          ..log(Level.error, 'error')
           ..log(Level.fatal, 'fatal');
 
         await later(() {
@@ -85,7 +85,7 @@ void main() {
 
           expect(records, hasLength(3));
           expect(records.elementAt(0).level, same(Level.warning));
-          expect(records.elementAt(1).level, same(Level.danger));
+          expect(records.elementAt(1).level, same(Level.error));
           expect(records.elementAt(2).level, same(Level.fatal));
         });
       });
@@ -102,14 +102,14 @@ void main() {
           ..trace('trace')
           ..info('info')
           ..warning('warning')
-          ..danger('danger')
+          ..error('error')
           ..fatal('fatal');
 
         await later(() {
           final records = handler.records;
 
           expect(records, hasLength(1));
-          expect(records.elementAt(0).level, same(Level.danger));
+          expect(records.elementAt(0).level, same(Level.error));
         });
       });
 
@@ -125,7 +125,7 @@ void main() {
           ..debug('3')
           ..info('4')
           ..fatal('5')
-          ..danger('6')
+          ..error('6')
           ..debug('7');
 
         await later(() {
@@ -179,12 +179,12 @@ void main() {
           ..level = Level.warning;
         Logger.getLogger('a')
           ..handler = aHandler
-          ..level = Level.danger;
+          ..level = Level.error;
 
         abc
           ..log(Level.info, 'Log')
           ..log(Level.warning, 'Log')
-          ..log(Level.danger, 'Log')
+          ..log(Level.error, 'Log')
           ..log(Level.fatal, 'Log');
 
         await later(() {
@@ -250,19 +250,19 @@ void main() {
       });
     });
 
-    group('#danger', () {
+    group('#error', () {
       test('Emits with corresponding severity level', () async {
         final handler = MemoryHandler();
         final logger = Logger.detached()
           ..handler = handler
           ..level = Level.all;
 
-        logger.danger('Message');
+        logger.error('Message');
 
         await later(() {
           final records = handler.records;
 
-          expect(records.elementAt(0).level, same(Level.danger));
+          expect(records.elementAt(0).level, same(Level.error));
         });
       });
     });
@@ -308,13 +308,13 @@ void main() {
           ..level = Level.warning;
         Logger.getLogger('a')
           ..handler = aHandler
-          ..level = Level.danger;
+          ..level = Level.error;
 
         final context = abc.bind();
 
         context
           ..info('ABC')
-          ..danger('ABC')
+          ..error('ABC')
           ..warning('ABC')
           ..fatal('ABC');
 

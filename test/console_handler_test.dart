@@ -49,7 +49,7 @@ void main() {
         handler.handle(RecordImpl(
             timestamp: DateTime.now(), level: Level.info, message: 'Test 1'));
         handler.handle(RecordImpl(
-            timestamp: DateTime.now(), level: Level.danger, message: 'Test 1'));
+            timestamp: DateTime.now(), level: Level.error, message: 'Test 1'));
         handler.handle(RecordImpl(
             timestamp: DateTime.now(),
             level: Level.warning,

@@ -18,10 +18,10 @@ extension DefaultLog on Interface {
   void warning(String message, [Object? error, StackTrace? stack]) =>
       log(Level.warning, message, error, stack);
 
-  /// Emits a record with [message] and [Level.danger] severity level.
+  /// Emits a record with [message] and [Level.error] severity level.
   @pragma('vm:prefer-inline')
-  void danger(String message, [Object? error, StackTrace? stack]) =>
-      log(Level.danger, message, error, stack);
+  void error(String message, [Object? error, StackTrace? stack]) =>
+      log(Level.error, message, error, stack);
 
   /// Emits a record with [message] and [Level.fatal] severity level.
   @pragma('vm:prefer-inline')

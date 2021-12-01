@@ -67,10 +67,10 @@ void info(String message) => _logger.info(message);
 /// See more [Interface.warning].
 void warning(String message) => _logger.warning(message);
 
-/// Emits a record with [message] and [Level.danger] severity level.
+/// Emits a record with [message] and [Level.error] severity level.
 ///
-/// See more [Interface.danger].
-void danger(String message) => _logger.danger(message);
+/// See more [Interface.error].
+void error(String message) => _logger.error(message);
 
 /// Emits a record with [message] and [Level.fatal] severity level.
 ///

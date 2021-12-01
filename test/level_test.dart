@@ -27,8 +27,8 @@ void main() {
       expect(Level.all < Level.debug, isTrue);
       expect(Level.debug < Level.info, isTrue);
       expect(Level.info < Level.warning, isTrue);
-      expect(Level.warning < Level.danger, isTrue);
-      expect(Level.danger < Level.fatal, isTrue);
+      expect(Level.warning < Level.error, isTrue);
+      expect(Level.error < Level.fatal, isTrue);
       expect(Level.fatal < Level.off, isTrue);
     });
 
@@ -37,12 +37,12 @@ void main() {
         Level.debug,
         Level.info,
         Level.warning,
-        Level.danger,
+        Level.error,
         Level.fatal,
       ];
 
       final levels = <Level>[
-        Level.danger,
+        Level.error,
         Level.info,
         Level.fatal,
         Level.debug,
@@ -64,7 +64,7 @@ void main() {
         Level.debug: 1,
         Level.info: 2,
         Level.warning: 3,
-        Level.danger: 4,
+        Level.error: 4,
         Level.fatal: 5,
         customLevel: 6,
       };
@@ -72,7 +72,7 @@ void main() {
       expect(levels[Level.debug], 1);
       expect(levels[Level.info], 2);
       expect(levels[Level.warning], 3);
-      expect(levels[Level.danger], 4);
+      expect(levels[Level.error], 4);
       expect(levels[Level.fatal], 5);
       expect(levels[customLevel], 6);
     });
