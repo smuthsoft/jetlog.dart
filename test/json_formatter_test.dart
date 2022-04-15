@@ -120,8 +120,7 @@ void main() {
           name: null,
           timestamp: timestamp,
           level: level,
-          message: message,
-          fields: null);
+          message: message);
       final result = formatter(record);
 
       final dict = {

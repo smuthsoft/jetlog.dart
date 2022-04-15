@@ -63,7 +63,7 @@ void main() {
           expect(record.level, same(Level.info));
           expect(record.message, 'test');
           expect(record.timestamp, isNotNull);
-          expect(record.fields, isNull);
+          expect(record.fields, isEmpty);
         });
       });
 

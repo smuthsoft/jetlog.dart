@@ -6,11 +6,13 @@ import 'package:jetlog/src/record_impl.dart';
 import 'package:jetlog/src/tracer.dart';
 import 'package:jetlog/src/tracer_impl.dart';
 
+import 'zone_fields.dart';
+
 class LoggingContext implements Interface {
-  LoggingContext(this._logger, [this._fields]);
+  LoggingContext(this._logger, [this._fields = const {}]);
 
   final LoggerImpl _logger;
-  final Set<Field>? _fields;
+  final Set<Field> _fields;
 
   @override
   void log(Level level, String message, [Object? error, StackTrace? stack]) {
@@ -20,7 +22,7 @@ class LoggingContext implements Interface {
           timestamp: DateTime.now(),
           level: level,
           message: message,
-          fields: _fields,
+          fields: _fields.followedBy(zoneFields).toSet(),
           error: error,
           stack: stack);
 
@@ -32,7 +34,7 @@ class LoggingContext implements Interface {
   @pragma('vm:prefer-inline')
   Interface bind([Iterable<Field>? fields]) => LoggingContext(_logger, {
         ...?fields,
-        ...?_fields,
+        ..._fields,
       });
 
   @override
