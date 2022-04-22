@@ -67,7 +67,7 @@ class Level implements Comparable<Level> {
   /// A severity level for *warning* records; often records with the warning
   /// level used to notify about events that may potentially cause application
   /// oddities.
-  static const Level warning = Level(name: 'WARNING', value: 0x300);
+  static const Level warning = Level(name: 'WARN', value: 0x300);
 
   /// A severity level for *error* records; often records with the error level
   /// used to notify about fatal error in the operation without impact
