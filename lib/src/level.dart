@@ -54,6 +54,11 @@ class Level implements Comparable<Level> {
   /// It is an error to provide this value to [Record.level].
   static const Level all = Level(name: '<ALL>', value: 0x0);
 
+  /// A severity level for *verbose* debugging records; often records with debug
+  /// level used to provide diagnostic information useful in development,
+  /// testing, etc., such records are usually discarded in production.
+  static const Level verbose = Level(name: 'V', value: 0x050);
+
   /// A severity level for *debugging* records; often records with debug level
   /// used to provide diagnostic information useful in development, testing,
   /// etc., such records are usually discarded in production.

@@ -3,6 +3,11 @@ import 'package:jetlog/src/level.dart';
 
 /// [DefaultLog] defines [Interface.log] aliases on [Interface] for some predefined [Level]s.
 extension DefaultLog on Interface {
+  /// Emits a record with [message] and [Level.verbose] severity level.
+  @pragma('vm:prefer-inline')
+  void verbose(String message, [Object? error, StackTrace? stack]) =>
+      log(Level.verbose, message, error, stack);
+
   /// Emits a record with [message] and [Level.debug] severity level.
   @pragma('vm:prefer-inline')
   void debug(String message, [Object? error, StackTrace? stack]) =>

@@ -45,6 +45,11 @@ set filter(Filter filter) => _logger.filter = filter;
 /// See more [Interface.log].
 void log(Level level, String message) => _logger.log(level, message);
 
+/// Emits a record with [message] and [Level.verbose] severity level.
+///
+/// See more [Interface.verbose].
+void verbose(String message) => _logger.verbose(message);
+
 /// Emits a record with [message] and [Level.debug] severity level.
 ///
 /// See more [Interface.debug].
