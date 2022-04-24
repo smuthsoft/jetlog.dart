@@ -53,10 +53,10 @@ TimeLogger time(String message, {Level level = Level.debug}) =>
 /// See more [Interface.log].
 void log(Level level, String message) => _logger.log(level, message);
 
-/// Emits a record with [message] and [Level.verbose] severity level.
+/// Emits a record with [message] and [Level.trace] severity level.
 ///
-/// See more [Interface.verbose].
-void verbose(String message) => _logger.verbose(message);
+/// See more [Interface.trace].
+void trace(String message) => _logger.trace(message);
 
 /// Emits a record with [message] and [Level.debug] severity level.
 ///

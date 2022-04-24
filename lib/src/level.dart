@@ -57,7 +57,7 @@ class Level implements Comparable<Level> {
   /// A severity level for *verbose* debugging records; often records with debug
   /// level used to provide diagnostic information useful in development,
   /// testing, etc., such records are usually discarded in production.
-  static const Level verbose = Level(name: 'V', value: 0x050);
+  static const Level trace = Level(name: 'TRACE', value: 0x050);
 
   /// A severity level for *debugging* records; often records with debug level
   /// used to provide diagnostic information useful in development, testing,
