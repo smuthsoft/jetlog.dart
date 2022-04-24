@@ -46,7 +46,12 @@ class NoopLogger with LoggerBase {
   }
 
   @override
-  TimeLogger time(String message, {Level level = Level.debug}) => _timer;
+  TimeLogger time(
+    String message, {
+    Level level = Level.debug,
+    bool logTimerStart = false,
+  }) =>
+      _timer;
 
   @override
   void log(Level level, String message, [Object? error, StackTrace? stack]) {
@@ -60,10 +65,16 @@ class NoopLogger with LoggerBase {
     buffer.write('NoopLogger(');
 
     if (name != null) {
-      buffer..write('name=')..write(name)..write(', ');
+      buffer
+        ..write('name=')
+        ..write(name)
+        ..write(', ');
     }
 
-    buffer..write('level=')..write(level.name)..write(')');
+    buffer
+      ..write('level=')
+      ..write(level.name)
+      ..write(')');
 
     return buffer.toString();
   }

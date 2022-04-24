@@ -4,7 +4,11 @@ import 'package:jetlog/src/level.dart';
 import 'package:jetlog/src/time_logger.dart';
 
 class TimeLoggerImpl implements TimeLogger {
-  TimeLoggerImpl(this._context, [this._level = Level.debug]) : _timer = Stopwatch();
+  TimeLoggerImpl(this._context,
+      {Level level = Level.debug, bool logTimerStart = false})
+      : _timer = Stopwatch(),
+        _level = level,
+        _logTimerStart = logTimerStart;
 
   late final DateTime startAt;
   DateTime? stopAt;
@@ -12,11 +16,13 @@ class TimeLoggerImpl implements TimeLogger {
 
   final Stopwatch _timer;
   final Level _level;
+  final bool _logTimerStart;
 
   @pragma('vm:prefer-inline')
   void start(String message) {
     startAt = DateTime.now();
-    _context = _context.bind({DTM('timerStart', startAt)})..log(_level, message);
+    _context = _context.bind({if (_logTimerStart) DTM('timerStart', startAt)})
+      ..log(_level, message);
 
     _timer.start();
   }

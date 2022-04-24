@@ -71,8 +71,8 @@ class LoggerImpl with LoggerBase {
       _context.log(level, message, error, stack);
 
   @override
-  TimeLogger time(String message, {Level level = Level.debug}) =>
-      _context.time(message, level: level);
+  TimeLogger time(String message, {Level level = Level.debug, bool logTimerStart = false,}) =>
+      _context.time(message, level: level, logTimerStart: logTimerStart);
 
   @override
   @pragma('vm:prefer-inline')

@@ -38,6 +38,8 @@ class LoggingContext implements Interface {
       });
 
   @override
-  TimeLogger time(String message, {Level level = Level.debug}) =>
-      TimeLoggerImpl(this, level)..start(message);
+  TimeLogger time(String message,
+          {Level level = Level.debug, bool logTimerStart = false}) =>
+      TimeLoggerImpl(this, level: level, logTimerStart: logTimerStart)
+        ..start(message);
 }

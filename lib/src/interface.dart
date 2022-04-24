@@ -19,7 +19,11 @@ abstract class Interface {
   /// Starts timing and emits a record with [message] and [level]
   /// severity level; to stop tracing call [TimeLogger.stop] on the returned
   /// timer.
-  TimeLogger time(String message, {Level level = Level.debug});
+  TimeLogger time(
+    String message, {
+    Level level = Level.debug,
+    bool logTimerStart = false,
+  });
 
   /// Creates and returns a new logging context with bound collection of
   /// [fields] added to existing one.
