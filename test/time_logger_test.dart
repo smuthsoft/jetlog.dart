@@ -1,17 +1,17 @@
 import 'package:jetlog/jetlog.dart' show Logger;
-import 'package:jetlog/src/tracer_impl.dart';
+import 'package:jetlog/src/time_logger_impl.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Tracer', () {
+  group('TimeLogger', () {
     group('#toString', () {
       test('returns correct string representation', () {
         final l = Logger.detached();
-        final t = l.trace('start') as TracerImpl;
+        final t = l.time('start') as TimeLoggerImpl;
 
         expect(
             t.toString(),
-            equals('Tracer(level=Level(name=DEBUG) '
+            equals('TimeLogger(level=Level(name=DEBUG) '
                 'isRunning=true '
                 'startAt=${t.startAt} '
                 'stopAt=${t.stopAt})'));
@@ -20,7 +20,7 @@ void main() {
 
         expect(
             t.toString(),
-            equals('Tracer(level=Level(name=DEBUG) '
+            equals('TimeLogger(level=Level(name=DEBUG) '
                 'isRunning=false '
                 'startAt=${t.startAt} '
                 'stopAt=${t.stopAt})'));

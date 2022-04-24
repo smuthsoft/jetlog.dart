@@ -1,10 +1,10 @@
 import 'package:jetlog/src/field.dart' show Field, Dur, DTM;
 import 'package:jetlog/src/interface.dart';
 import 'package:jetlog/src/level.dart';
-import 'package:jetlog/src/tracer.dart';
+import 'package:jetlog/src/time_logger.dart';
 
-class TracerImpl implements Tracer {
-  TracerImpl(this._context, [this._level = Level.debug]) : _timer = Stopwatch();
+class TimeLoggerImpl implements TimeLogger {
+  TimeLoggerImpl(this._context, [this._level = Level.debug]) : _timer = Stopwatch();
 
   late final DateTime startAt;
   DateTime? stopAt;
@@ -16,7 +16,7 @@ class TracerImpl implements Tracer {
   @pragma('vm:prefer-inline')
   void start(String message) {
     startAt = DateTime.now();
-    _context = _context.bind({DTM('traceStart', startAt)})..log(_level, message);
+    _context = _context.bind({DTM('timerStart', startAt)})..log(_level, message);
 
     _timer.start();
   }
@@ -27,7 +27,7 @@ class TracerImpl implements Tracer {
       _timer.stop();
       stopAt = DateTime.now();
       _context.bind({
-        Dur('traceDuration', _timer.elapsed),
+        Dur('duration', _timer.elapsed),
         if (fields != null) ...fields
       }).log(level ?? _level, message);
     }
@@ -38,7 +38,7 @@ class TracerImpl implements Tracer {
     final buffer = StringBuffer();
 
     buffer
-      ..write('Tracer(')
+      ..write('TimeLogger(')
       ..write('level=')
       ..write(_level)
       ..write(' ')

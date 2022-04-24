@@ -8,7 +8,7 @@ import 'package:jetlog/src/level.dart';
 import 'package:jetlog/src/logger.dart';
 import 'package:jetlog/src/logging_context.dart';
 import 'package:jetlog/src/record.dart';
-import 'package:jetlog/src/tracer.dart';
+import 'package:jetlog/src/time_logger.dart';
 
 class LoggerImpl with LoggerBase {
   LoggerImpl._(this.name, [this.children]) {
@@ -71,8 +71,8 @@ class LoggerImpl with LoggerBase {
       _context.log(level, message, error, stack);
 
   @override
-  Tracer trace(String message, {Level level = Level.debug}) =>
-      _context.trace(message, level: level);
+  TimeLogger time(String message, {Level level = Level.debug}) =>
+      _context.time(message, level: level);
 
   @override
   @pragma('vm:prefer-inline')

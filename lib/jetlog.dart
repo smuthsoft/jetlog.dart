@@ -29,6 +29,6 @@ export 'src/interface.dart';
 export 'src/level.dart';
 export 'src/logger.dart';
 export 'src/record.dart';
-export 'src/tracer.dart';
+export 'src/time_logger.dart';
 export 'src/zone_fields.dart'
     show logFieldsForZoneValues, runZonedWithLogFields;

@@ -18,11 +18,11 @@ Future<void> main() async {
     const Str('mime', 'image/png'),
   });
 
-  final tracer = context.trace('Uploading!', level: Level.info);
+  final timer = context.time('Uploading!', level: Level.info);
 
   // Emulate uploading, wait for 1 sec.
   await Future<void>.delayed(const Duration(seconds: 1));
 
-  tracer.stop('Aborting...');
+  timer.stop('Aborting...');
   context.fatal('Failed to upload!');
 }

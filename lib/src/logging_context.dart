@@ -3,8 +3,8 @@ import 'package:jetlog/src/interface.dart';
 import 'package:jetlog/src/level.dart';
 import 'package:jetlog/src/logger_impl.dart';
 import 'package:jetlog/src/record_impl.dart';
-import 'package:jetlog/src/tracer.dart';
-import 'package:jetlog/src/tracer_impl.dart';
+import 'package:jetlog/src/time_logger.dart';
+import 'package:jetlog/src/time_logger_impl.dart';
 
 import 'zone_fields.dart';
 
@@ -38,6 +38,6 @@ class LoggingContext implements Interface {
       });
 
   @override
-  Tracer trace(String message, {Level level = Level.debug}) =>
-      TracerImpl(this, level)..start(message);
+  TimeLogger time(String message, {Level level = Level.debug}) =>
+      TimeLoggerImpl(this, level)..start(message);
 }

@@ -4,9 +4,9 @@ import 'package:jetlog/src/handler.dart';
 import 'package:jetlog/src/interface.dart';
 import 'package:jetlog/src/level.dart';
 import 'package:jetlog/src/logger.dart';
-import 'package:jetlog/src/tracer.dart';
+import 'package:jetlog/src/time_logger.dart';
 
-class NoopTracer implements Tracer {
+class NoopTimeLogger implements TimeLogger {
   @override
   @pragma('vm:prefer-inline')
   void stop(String message, {Level? level, Iterable<Field>? fields}) {}
@@ -18,7 +18,7 @@ class NoopLogger with LoggerBase {
   Level? _level;
 
   static final NoopLogger _logger = NoopLogger();
-  static final NoopTracer _tracer = NoopTracer();
+  static final NoopTimeLogger _timer = NoopTimeLogger();
 
   @override
   set level(Level? level) {
@@ -46,7 +46,7 @@ class NoopLogger with LoggerBase {
   }
 
   @override
-  Tracer trace(String message, {Level level = Level.debug}) => _tracer;
+  TimeLogger time(String message, {Level level = Level.debug}) => _timer;
 
   @override
   void log(Level level, String message, [Object? error, StackTrace? stack]) {

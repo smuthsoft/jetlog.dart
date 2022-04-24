@@ -2,7 +2,7 @@ import 'package:jetlog/src/field.dart' show Field;
 import 'package:jetlog/src/handler.dart';
 import 'package:jetlog/src/level.dart';
 import 'package:jetlog/src/logger.dart';
-import 'package:jetlog/src/tracer.dart';
+import 'package:jetlog/src/time_logger.dart';
 
 /// [Interface] represents a set of common methods that is implemented by both
 /// [Logger] and logging context returned by [Interface.bind].
@@ -16,9 +16,10 @@ abstract class Interface {
   /// throw [ArgumentError].
   void log(Level level, String message, [Object? error, StackTrace? stack]);
 
-  /// Starts tracing and emits a record with [message] and [level]
-  /// severity level; to stop tracing call [Tracer.stop] on the returned tracer.
-  Tracer trace(String message, {Level level = Level.debug});
+  /// Starts timing and emits a record with [message] and [level]
+  /// severity level; to stop tracing call [TimeLogger.stop] on the returned
+  /// timer.
+  TimeLogger time(String message, {Level level = Level.debug});
 
   /// Creates and returns a new logging context with bound collection of
   /// [fields] added to existing one.
@@ -31,12 +32,12 @@ abstract class Interface {
   ///   Str('mime', 'image/png'),
   /// });
   ///
-  /// final tracer = context.trace('Uploading!', Level.info);
+  /// final timer = context.time('Uploading!', Level.info);
   ///
   /// // Emulate uploading, wait for 1 sec.
   /// await Future<void>.delayed(const Duration(seconds: 1));
   ///
-  /// tracer.stop('Aborting...');
+  /// timer.stop('Aborting...');
   /// context.fatal('Failed to upload!');
   /// ```
   ///

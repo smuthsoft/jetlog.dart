@@ -40,6 +40,14 @@ set handler(Handler handler) => _logger.handler = handler;
 /// See more [Logger.filter] setter.
 set filter(Filter filter) => _logger.filter = filter;
 
+/// Starts tracing and emits a record with [message] and [level]
+/// severity level; to stop tracing call [TimeLogger.stop] on the returned
+/// timer.
+///
+/// See more [Interface.time].
+TimeLogger time(String message, {Level level = Level.debug}) =>
+    _logger.time(message, level: level);
+
 /// Emits a record with [message] and [level] severity level.
 ///
 /// See more [Interface.log].
@@ -55,12 +63,6 @@ void verbose(String message) => _logger.verbose(message);
 /// See more [Interface.debug].
 void debug(String message) => _logger.debug(message);
 
-/// Starts tracing and emits a record with [message] and [level]
-/// severity level; to stop tracing call [Tracer.stop] on the returned tracer.
-///
-/// See more [Interface.trace].
-Tracer trace(String message, {Level level = Level.debug}) =>
-    _logger.trace(message, level: level);
 
 /// Emits a record with [message] and [Level.info] severity level.
 ///
